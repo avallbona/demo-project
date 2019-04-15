@@ -7,7 +7,7 @@ class ArtistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Artist
-        fields = ('name', )
+        fields = ('name',)
 
 
 class CalificationSerializer(serializers.ModelSerializer):
@@ -21,10 +21,8 @@ class CalificationSerializer(serializers.ModelSerializer):
 
 class PortfolioSerializer(serializers.ModelSerializer):
 
-    # artists = ArtistSerializer(many=True)
     artists = CalificationSerializer(many=True, source='califications')
 
     class Meta:
         model = Portfolio
-        # fields = ('id', 'name', 'user', 'artists', 'califications')
         fields = ('id', 'name', 'user', 'artists',)
